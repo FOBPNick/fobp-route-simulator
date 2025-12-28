@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>FOBP Route Planning Simulator</title>
-
-  <!-- Leaflet CSS -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  />
-  <!-- Your existing CSS -->
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<title>FOBP Route Simulator Test</title>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+<style>
+  #map { height: 100vh; }
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>FOBP Route Planning Simulator</h1>
-    <p>Educational tool for avalanche awareness and terrain-based decision making.</p>
-  </header>
+<div id="map"></div>
 
-  <div id="controls">
-    <button id="drawRouteBtn">Draw Route</button>
-    <button id="clearRouteBtn">Clear Route</button>
-  </div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// Initialize map
+const map = L.map('map').setView([39.7985, -105.7775], 13);
 
-  <div id="map"></div>
+// Basemap
+L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+  maxZoom: 17
+}).addTo(map);
 
-  <footer>
-    <p>For educational purposes only. Not a navigation or safety tool.</p>
-  </footer>
+// Test polygon
+const poly = L.polygon([
+  [39.7980, -105.7790],
+  [39.7980, -105.7760],
+  [39.8000, -105.7760],
+  [39.8000, -105.7790]
+], { color: 'green', fillOpacity: 0.5 }).addTo(map);
 
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <!-- Custom JS -->
-  <script src="app.js"></script>
+poly.bindPopup('Slope: 0-27°');
+</script>
 </body>
 </html>
