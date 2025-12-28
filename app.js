@@ -1,6 +1,16 @@
 // Initialize map centered on Berthoud Pass
 const map = L.map('map').setView([39.7985, -105.7775], 13);
 
+// TEST polygon directly on the map
+const testPolygon = L.polygon([
+  [39.7980, -105.7790],
+  [39.7980, -105.7760],
+  [39.8000, -105.7760],
+  [39.8000, -105.7790]
+], { color: 'green', fillOpacity: 0.4 }).addTo(map);
+
+testPolygon.bindPopup('Test slope polygon');
+
 // Topographic basemap
 L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
   maxZoom: 17,
