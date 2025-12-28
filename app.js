@@ -7,13 +7,12 @@ L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
   attribution: '© OpenTopoMap contributors'
 }).addTo(map);
 
-// Placeholder slope-angle overlay
-L.tileLayer(
-  'https://tiles.wmflabs.org/hillshading/{z}/{x}/{y}.png',
-  { opacity: 0.35 }
-).addTo(map);
+// Placeholder hillshade overlay
+L.tileLayer('https://tiles.wmflabs.org/hillshading/{z}/{x}/{y}.png', {
+  opacity: 0.35
+}).addTo(map);
 
-// Route drawing logic
+// Route drawing
 let routeLine = null;
 let drawing = false;
 let routePoints = [];
@@ -21,19 +20,14 @@ let routePoints = [];
 document.getElementById('drawRouteBtn').onclick = () => {
   drawing = true;
   routePoints = [];
-  if (routeLine) {
-    map.removeLayer(routeLine);
-    routeLine = null;
-  }
+  if (routeLine) map.removeLayer(routeLine);
 };
 
 document.getElementById('clearRouteBtn').onclick = () => {
   drawing = false;
   routePoints = [];
-  if (routeLine) {
-    map.removeLayer(routeLine);
-    routeLine = null;
-  }
+  if (routeLine) map.removeLayer(routeLine);
+  routeLine = null;
 };
 
 map.on('click', (e) => {
@@ -44,9 +38,6 @@ map.on('click', (e) => {
   if (routeLine) {
     routeLine.setLatLngs(routePoints);
   } else {
-    routeLine = L.polyline(routePoints, {
-      color: 'red',
-      weight: 4
-    }).addTo(map);
+    routeLine = L.polyline(routePoints, { color: 'red', weight: 4 }).addTo(map);
   }
 });
