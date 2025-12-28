@@ -67,6 +67,6 @@ const slopePolygon1 = L.polygon([
   [39.7985, -105.7775],
   [39.7995, -105.7775],
   [39.7995, -105.7785]
-], { color: 'yellow', fillOpacity: 0.35, weight: 2 }).addTo(map);
+], { color: 'yellow', fillOpacity: 0.7, weight: 7 }).addTo(map);
 
 slopePolygon1.bindPopup('Slope: 28-34°');
