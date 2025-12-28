@@ -7,13 +7,13 @@ L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
   attribution: '© OpenTopoMap contributors'
 }).addTo(map);
 
-// Optional hillshade overlay for terrain visualization
+// Optional hillshade overlay
 L.tileLayer('https://tiles.wmflabs.org/hillshading/{z}/{x}/{y}.png', {
   opacity: 0.35
 }).addTo(map);
 
 // --------------------
-// ROUTE DRAWING LOGIC
+// ROUTE DRAWING
 // --------------------
 let routeLine = null;
 let drawing = false;
@@ -45,12 +45,12 @@ map.on('click', (e) => {
 });
 
 // --------------------
-// TEST SLOPE POLYGON
+// TEST POLYGON (Slope) 
 // --------------------
-// This polygon is guaranteed to appear near the center of the map
+// Ensure this polygon is within map viewport
 const testSlopePolygon = L.polygon([
-  [39.7970, -105.7790],
-  [39.7970, -105.7760],
+  [39.7980, -105.7790],
+  [39.7980, -105.7760],
   [39.8000, -105.7760],
   [39.8000, -105.7790]
 ], {
