@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header, footer {
+  padding: 10px 16px;
+  background: #f2f2f2;
+}
+
+#controls {
+  padding: 8px 16px;
+  background: #ffffff;
+  border-bottom: 1px solid #ccc;
+}
+
+#controls button {
+  margin-right: 8px;
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+#map {
+  height: calc(100vh - 100px);
+}
