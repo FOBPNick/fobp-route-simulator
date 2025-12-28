@@ -12,6 +12,23 @@ L.tileLayer('https://tiles.wmflabs.org/hillshading/{z}/{x}/{y}.png', {
   opacity: 0.35
 }).addTo(map);
 
+// Load slope overlay
+fetch('slopes.geojson')
+  .then(response => response.json())
+  .then(data => {
+    L.geoJSON(data, {
+      style: feature => ({
+        color: feature.properties.color,
+        weight: 1,
+        fillOpacity: 0.35
+      }),
+      onEachFeature: (feature, layer) => {
+        layer.bindPopup(`Slope: ${feature.properties.slope}°`);
+      }
+    }).addTo(map);
+  })
+  .catch(err => console.error('Error loading slope overlay:', err));
+
 // Route drawing
 let routeLine = null;
 let drawing = false;
