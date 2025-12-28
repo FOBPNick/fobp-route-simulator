@@ -61,12 +61,12 @@ const testSlopePolygon = L.polygon([
 
 testSlopePolygon.bindPopup('Slope: 0-27°');
 
-// Yellow slope polygon, visible in map viewport
+// Yellow slope polygon, directly northeast of green polygon
 const slopePolygon1 = L.polygon([
-  [39.7980, -105.7790],
-  [39.7980, -105.7780],
-  [39.7990, -105.7780],
-  [39.7990, -105.7790]
+  [39.8000, -105.7785],  // top-left
+  [39.8000, -105.7755],  // top-right
+  [39.8020, -105.7755],  // bottom-right
+  [39.8020, -105.7785]   // bottom-left
 ], { color: 'yellow', fillOpacity: 0.35, weight: 2 }).addTo(map);
 
 slopePolygon1.bindPopup('Slope: 28-34°');
