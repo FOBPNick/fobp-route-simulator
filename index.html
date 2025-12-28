@@ -3,11 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <title>FOBP Route Planning Simulator</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <h1>FOBP Route Planning Simulator</h1>
-  <p>This page will soon host an interactive Berthoud Pass route-planning tool.</p>
+  <header>
+    <h1>FOBP Route Planning Simulator</h1>
+    <p>Educational tool for avalanche awareness and terrain-based decision making.</p>
+  </header>
 
+  <div id="controls">
+    <button id="drawRouteBtn">Draw Route</button>
+    <button id="clearRouteBtn">Clear Route</button>
+  </div>
+
+  <div id="map"></div>
+
+  <footer>
+    <p>For educational purposes only. Not a navigation or safety tool.</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
