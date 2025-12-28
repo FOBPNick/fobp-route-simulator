@@ -1,45 +1,20 @@
 // Initialize map centered on Berthoud Pass
 const map = L.map('map').setView([39.7985, -105.7775], 13);
 
-// TEST polygon directly on the map
-const testPolygon = L.polygon([
-  [39.7980, -105.7790],
-  [39.7980, -105.7760],
-  [39.8000, -105.7760],
-  [39.8000, -105.7790]
-], { color: 'green', fillOpacity: 0.4 }).addTo(map);
-
-testPolygon.bindPopup('Test slope polygon');
-
 // Topographic basemap
 L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
   maxZoom: 17,
   attribution: '© OpenTopoMap contributors'
 }).addTo(map);
 
-// Placeholder hillshade overlay
+// Optional hillshade overlay for terrain visualization
 L.tileLayer('https://tiles.wmflabs.org/hillshading/{z}/{x}/{y}.png', {
   opacity: 0.35
 }).addTo(map);
 
-// Load slope overlay
-fetch('slopes.geojson')
-  .then(response => response.json())
-  .then(data => {
-    L.geoJSON(data, {
-      style: feature => ({
-        color: feature.properties.color,
-        weight: 1,
-        fillOpacity: 0.35
-      }),
-      onEachFeature: (feature, layer) => {
-        layer.bindPopup(`Slope: ${feature.properties.slope}°`);
-      }
-    }).addTo(map);
-  })
-  .catch(err => console.error('Error loading slope overlay:', err));
-
-// Route drawing
+// --------------------
+// ROUTE DRAWING LOGIC
+// --------------------
 let routeLine = null;
 let drawing = false;
 let routePoints = [];
@@ -68,3 +43,20 @@ map.on('click', (e) => {
     routeLine = L.polyline(routePoints, { color: 'red', weight: 4 }).addTo(map);
   }
 });
+
+// --------------------
+// TEST SLOPE POLYGON
+// --------------------
+// This polygon is guaranteed to appear near the center of the map
+const testSlopePolygon = L.polygon([
+  [39.7970, -105.7790],
+  [39.7970, -105.7760],
+  [39.8000, -105.7760],
+  [39.8000, -105.7790]
+], {
+  color: 'green',
+  fillOpacity: 0.4,
+  weight: 2
+}).addTo(map);
+
+testSlopePolygon.bindPopup('Slope: 0-27°');
